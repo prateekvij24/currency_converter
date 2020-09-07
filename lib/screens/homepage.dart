@@ -167,27 +167,27 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                         toConvert == false
-                            ? Container(
-                                decoration: BoxDecoration(
-                                  color: AppColors.primaryColor,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                height: data.size.height * 0.07,
-                                width: data.size.width * 0.43,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      isLoading = true;
-                                      convertfunc(
-                                              widget.currencyval,
-                                              widget.fromcurrency,
-                                              widget.tocurrency)
-                                          .then((value) {
-                                        toConvert = true;
-                                        isLoading = false;
-                                      });
+                            ? GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    isLoading = true;
+                                    convertfunc(
+                                            widget.currencyval,
+                                            widget.fromcurrency,
+                                            widget.tocurrency)
+                                        .then((value) {
+                                      toConvert = true;
+                                      isLoading = false;
                                     });
-                                  },
+                                  });
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: AppColors.primaryColor,
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  height: data.size.height * 0.07,
+                                  width: data.size.width * 0.43,
                                   child: Center(
                                     child: Text(
                                       isLoading ? 'Converting...' : 'CONVERT',
